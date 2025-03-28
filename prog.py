@@ -12,14 +12,14 @@ from deepseek import Deepseek2
 from grok import Grok2
 from hugface import HugFace
 
-model = Gemini4
+Model = Gemini4
 
 async def main():
     """Example main function"""
 
-    prompt = "roll a die"
+    prompt = "roll a die please"
 
-    context = support.AIContext(model)
+    context = support.AIContext(Model)
 
     async with context.session:
         response = await support.single_shot_ask(context, prompt)

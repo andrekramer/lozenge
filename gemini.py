@@ -43,6 +43,6 @@ class Gemini3(Gemini):
     model = "gemini-2.0-pro-exp-02-05"
 
 class Gemini4(Gemini):
-    """Meta Gemini 2.5pro experimental"""
+    """Meta Gemini 2.5 pro experimental"""
     name = "gemini4"
     model = "gemini-2.5-pro-exp-03-25"

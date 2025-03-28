@@ -3,7 +3,8 @@ import support
 
 hugface_api_key = support.read_file_as_string("hugface-api-key").strip()
 
-URL = "https://router.huggingface.co/hf-inference/models" # was "https://api-inference.huggingface.co/models"
+URL = "https://router.huggingface.co/hf-inference/models"
+# was "https://api-inference.huggingface.co/models"
 
 class HugFace(support.Model):
     """Gemma 2"""

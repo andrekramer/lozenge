@@ -1,6 +1,7 @@
 """support for model comparisons"""
-import aiohttp
 import json
+import aiohttp
+
 DEBUG = False
 
 class Model:
@@ -30,6 +31,14 @@ class AIContext:
     def __init__(self, model):
         self.model = model
         self.session = get_session()
+
+    def get_model(self):
+        """get the model"""
+        return self.model
+
+    def set_model(self, model):
+        """set the model"""
+        self.model = model
 
 def serialize(json_object):
     """serialize an object to json"""
@@ -70,6 +79,15 @@ def read_file_as_string(filepath):
     except Exception as e:
         print(f"An error occurred while reading '{filepath}': {e}")
         return None
+
+def write_file_as_string(filepath, content):
+    """write a file as string"""
+    try:
+        with open(filepath, mode='w', encoding="utf-8") as file:
+            file.write(content)
+    except Exception as e:
+        print(f"An error occurred while writing '{filepath}': {e}")
+        raise e
 
 async def ask(url, session, query, headers):
     """ask via async http post"""

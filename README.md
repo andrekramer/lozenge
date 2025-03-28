@@ -8,3 +8,6 @@ source py-install
 To run:
 python prog.py
 
+Put some thesis or prior synthesis into a file called synthesis and run:
+python dialectrician.py
+
