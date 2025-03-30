@@ -21,8 +21,9 @@ async def main():
 
     synthesis = await dialectic(synthesis)
 
-    support.write_file_as_string("synthesis", synthesis)
+    display("dialectic synthesis", synthesis)
     # write the synthesis to a file so it can be used on next run
+    support.write_file_as_string("synthesis", synthesis)
 
 if __name__ == "__main__":
     asyncio.run(main())

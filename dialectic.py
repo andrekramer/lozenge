@@ -12,7 +12,7 @@ from deepseek import Deepseek2
 from grok import Grok2
 from hugface import HugFace
 
-Model = Gemini4
+Model = Openai
 ThesisModel = Model
 AntithesisModel = Model
 SynthesisModel = Model
@@ -38,6 +38,8 @@ def display(title, text):
     print(LEFT_DASHES + title + RIGHT_DASHES)
     print(text)
 
+SYNTHESIS_ONLY = False
+
 async def dialectic(synthesis):
     """A dialectic process to construct a thesis, antithesis and synthesis.
        starting with some prior synthesis as argument. Returns the synthesis."""
@@ -45,14 +47,15 @@ async def dialectic(synthesis):
 
     async with context.session:
 
-        thesis = "Construct a thesis (and only the thesis) in the dialectic for the following:\n"
+        thesis = "Construct a thesis (and output only the thesis)" + \
+            "in the dialectic for the following:\n"
 
         round1 = INSTRUCTIONS + thesis + synthesis
         display("?thesis?", round1)
         thesis = await support.single_shot_ask(context, clean(round1))
         display("thesis", thesis)
 
-        antithesis = "Construct an antithesis (and only the antithesis)" + \
+        antithesis = "Construct an antithesis (and output only the antithesis)" + \
              " in the dialectic for the following thesis:\n"
 
         context.model = AntithesisModel
@@ -62,7 +65,8 @@ async def dialectic(synthesis):
 
         display("antithesis", antithesis)
 
-        synthesis = "Construct a synthesis in the dialectic " + \
+        synthesis = "Construct a synthesis (and output only the synthesis)" + \
+            " in the dialectic " + \
             "for the following thesis and antithesis:\n" + \
             "thesis:\n" + thesis + "\nantithesis:\n" + antithesis
 
@@ -74,4 +78,7 @@ async def dialectic(synthesis):
 
         display("synthesis", synthesis)
 
-        return synthesis
+        if SYNTHESIS_ONLY:
+            return synthesis
+
+        return thesis + "\n" + antithesis + "\n" + synthesis

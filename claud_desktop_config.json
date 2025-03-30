@@ -1,0 +1,15 @@
+{
+    "mcpServers": {
+      "Dialectic": {
+        "command": "uv",
+        "args": [
+          "run",
+          "--with",
+          "mcp[cli],aiohttp",
+          "mcp",
+          "run",
+          "/Users/andrekramer/code/python/lozenge/dialectic_server.py"
+        ]
+      }
+    }
+  }

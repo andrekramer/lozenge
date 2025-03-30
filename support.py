@@ -4,6 +4,10 @@ import aiohttp
 
 DEBUG = False
 
+# Set to place where repo copy is located when running as MCP server.
+# Can be set to None when running as a script.
+FILEPATH = None
+
 class Model:
     """Base class for all AI models"""
 
@@ -67,8 +71,9 @@ def make_std_query_from_object(obj, text):
 
 make_openai_std_query = make_openai_std_query_from_text
 
-def read_file_as_string(filepath):
+def read_file_as_string(filename):
     """read a file as string"""
+    filepath = FILEPATH + filename if FILEPATH is not None else filename
     try:
         with open(filepath, mode='r', encoding="utf-8") as file:
             file_content = file.read()
