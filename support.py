@@ -1,8 +1,8 @@
 """support for model comparisons"""
 
+from os import getenv, path
 import json
 import aiohttp
-from os import getenv, path
 
 DEBUG = False
 
@@ -78,7 +78,7 @@ make_openai_std_query = make_openai_std_query_from_text
 
 def read_file_as_string(filename):
     """read a file as string"""
-    
+
     filename = path.join(filepath, filename) if filepath is not None else filename
     try:
         with open(filename, mode='r', encoding="utf-8") as file:
@@ -91,13 +91,13 @@ def read_file_as_string(filename):
         print(f"An error occurred while reading '{filename}': {e}")
         return None
 
-def write_file_as_string(filepath, content):
+def write_file_as_string(filename, content):
     """write a file as string"""
     try:
-        with open(filepath, mode='w', encoding="utf-8") as file:
+        with open(filename, mode='w', encoding="utf-8") as file:
             file.write(content)
     except Exception as e:
-        print(f"An error occurred while writing '{filepath}': {e}")
+        print(f"An error occurred while writing '{filename}': {e}")
         raise e
 
 async def ask(url, session, query, headers):

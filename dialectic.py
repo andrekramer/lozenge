@@ -12,7 +12,7 @@ from deepseek import Deepseek2
 from grok import Grok2
 from hugface import HugFace
 
-Model = Openai
+Model = Gemini4
 ThesisModel = Model
 AntithesisModel = Model
 SynthesisModel = Model
@@ -27,6 +27,8 @@ INSTRUCTIONS = "You are a dialectician. " + \
 LEFT_DASHES = "-" * 20 + " "
 RIGHT_DASHES = " " + "-" * 20
 
+DISPLAY = True
+
 def clean(s):
     """remove line breaks from string and escape \""""
     str1 = s.replace("\n", "\\n")
@@ -35,6 +37,8 @@ def clean(s):
 
 def display(title, text):
     """Display title and text"""
+    if not DISPLAY:
+        return
     print(LEFT_DASHES + title + RIGHT_DASHES)
     print(text)
 
