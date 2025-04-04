@@ -4,9 +4,13 @@ starting with a prior synthesis read from a file (if previously saved)."""
 
 import asyncio
 
-from dialectic import dialectic, display, DEFAULT_PROMPT
+from dialectic import dialectic, display, DEFAULT_PROMPT, Config
 
 import support
+
+Config.display = True
+Config.synthesis_only = True
+
 
 async def main():
     """main dialectician function"""

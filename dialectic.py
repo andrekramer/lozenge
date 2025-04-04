@@ -12,7 +12,7 @@ from deepseek import Deepseek2
 from grok import Grok2
 from hugface import HugFace
 
-Model = Gemini4
+Model = Openai
 ThesisModel = Model
 AntithesisModel = Model
 SynthesisModel = Model
@@ -27,7 +27,10 @@ INSTRUCTIONS = "You are a dialectician. " + \
 LEFT_DASHES = "-" * 20 + " "
 RIGHT_DASHES = " " + "-" * 20
 
-DISPLAY = True
+class Config:
+    """Configuration for dialectic process"""
+    display = False
+    synthesis_only = False
 
 def clean(s):
     """remove line breaks from string and escape \""""
@@ -37,12 +40,11 @@ def clean(s):
 
 def display(title, text):
     """Display title and text"""
-    if not DISPLAY:
+    if not Config.display:
         return
     print(LEFT_DASHES + title + RIGHT_DASHES)
     print(text)
 
-SYNTHESIS_ONLY = False
 
 async def dialectic(synthesis):
     """A dialectic process to construct a thesis, antithesis and synthesis.
@@ -57,6 +59,8 @@ async def dialectic(synthesis):
         round1 = INSTRUCTIONS + thesis + synthesis
         display("?thesis?", round1)
         thesis = await support.single_shot_ask(context, clean(round1))
+        if thesis is None or len(thesis.strip()) == 0:
+            raise ValueError("thesis is empty")
         display("thesis", thesis)
 
         antithesis = "Construct an antithesis (and output only the antithesis)" + \
@@ -66,7 +70,8 @@ async def dialectic(synthesis):
         round2 = INSTRUCTIONS + antithesis + thesis
         display("?antithesis?", round2)
         antithesis = await support.single_shot_ask(context, clean(round2))
-
+        if antithesis is None or len(antithesis.strip()) == 0:
+            raise ValueError("antithesis is empty")
         display("antithesis", antithesis)
 
         synthesis = "Construct a synthesis (and output only the synthesis)" + \
@@ -79,10 +84,11 @@ async def dialectic(synthesis):
         display("?synthesis?", round3)
 
         synthesis= await support.single_shot_ask(context, clean(round3))
-
+        if synthesis is None or len(synthesis.strip()) == 0:
+            raise ValueError("synthesis is empty")
         display("synthesis", synthesis)
 
-        if SYNTHESIS_ONLY:
+        if Config.synthesis_only:
             return synthesis
 
         return thesis + "\n" + antithesis + "\n" + synthesis
