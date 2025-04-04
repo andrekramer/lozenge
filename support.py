@@ -1,12 +1,17 @@
 """support for model comparisons"""
+
 import json
 import aiohttp
+from os import getenv, path
 
 DEBUG = False
 
 # Set to place where repo copy is located when running as MCP server.
-# Can be set to None when running as a script.
+# Can be set to None when running as a script in same dir.
+# Or if set as an env var (called FILENAME).
 FILEPATH = None
+
+filepath = getenv("FILEPATH", FILEPATH)
 
 class Model:
     """Base class for all AI models"""
@@ -73,16 +78,17 @@ make_openai_std_query = make_openai_std_query_from_text
 
 def read_file_as_string(filename):
     """read a file as string"""
-    filepath = FILEPATH + filename if FILEPATH is not None else filename
+    
+    filename = path.join(filepath, filename) if filepath is not None else filename
     try:
-        with open(filepath, mode='r', encoding="utf-8") as file:
+        with open(filename, mode='r', encoding="utf-8") as file:
             file_content = file.read()
         return file_content
     except FileNotFoundError:
-        print(f"Error: File '{filepath}' not found.")
+        print(f"Error: File '{filename}' not found.")
         return None
     except Exception as e:
-        print(f"An error occurred while reading '{filepath}': {e}")
+        print(f"An error occurred while reading '{filename}': {e}")
         return None
 
 def write_file_as_string(filepath, content):

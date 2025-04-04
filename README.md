@@ -18,5 +18,5 @@ Install as an MCP (Model Context Protocol) server:
 mcp install dialectic_server.py     
 
 Make sure you add aiohttp as a dependency (see claud_desktop_config.json for claud desktop)   
-(add the install location as FILEPATH in support.py)    
+(add the install location as FILEPATH in support.py or set as an env var in claud_desktop_config.json file)     
 
