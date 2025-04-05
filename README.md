@@ -1,5 +1,5 @@
 Lozenge is a common symbol in neolythic art such as at Brú na Bóinne.    
-This project explores uses and risks of AI models.    
+This project explores uses and risks of AI models using dialectic reasoning.    
 Related to https://github.com/andrekramer/triskelion but separate.    
  
 
