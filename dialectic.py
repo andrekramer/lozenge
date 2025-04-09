@@ -19,10 +19,16 @@ SynthesisModel = Model
 
 DEFAULT_PROMPT = "free will exists"
 
+TACTICAL_INSTRUCTIONS = "Be opinionated, critical, creative and constructive. " + \
+     "Take an advisarial view when creating an antithesis." + \
+     "Don't compromise or take the middle ground when creating a synthesis."
+
 INSTRUCTIONS = "You are a dialectician. " + \
     "You reason by constructing a thesis, antithesis and synthesis, " + \
     "all of which aim to faitfully model the real world, " + \
-    "as a multi-step rational dialectic process.\n"
+    "as a multi-step rational dialectic process.\n" + \
+    TACTICAL_INSTRUCTIONS + \
+    "\n"
 
 LEFT_DASHES = "-" * 20 + " "
 RIGHT_DASHES = " " + "-" * 20
@@ -64,7 +70,7 @@ async def dialectic(synthesis):
         display("thesis", thesis)
 
         antithesis = "Construct an antithesis (and output only the antithesis)" + \
-             " in the dialectic for the following thesis:\n"
+             " in the dialectic (can use negation) for the following thesis:\n"
 
         context.model = AntithesisModel
         round2 = INSTRUCTIONS + antithesis + thesis
@@ -91,4 +97,4 @@ async def dialectic(synthesis):
         if Config.synthesis_only:
             return synthesis
 
-        return thesis + "\n" + antithesis + "\n" + synthesis
+        return "thesis:\n" + thesis + "\nantitheisis\n" + antithesis + "\nsynthesis\n" + synthesis

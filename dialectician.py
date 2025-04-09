@@ -2,6 +2,7 @@
 It uses a dialectic process to construct a synthesis from a thesis and antithesis.
 starting with a prior synthesis read from a file (if previously saved)."""
 
+import argparse
 import asyncio
 
 from dialectic import dialectic, display, DEFAULT_PROMPT, Config
@@ -15,19 +16,30 @@ Config.synthesis_only = True
 async def main():
     """main dialectician function"""
 
-    # read the prompt from a file if it exists
-    synthesis = support.read_file_as_string("synthesis")
-    if synthesis is not None and len(synthesis.strip()) > 0:
-        display("synthesis prompt", synthesis)
-    else:
-        print("no synthesis prompt found, using default prompt")
-        synthesis = DEFAULT_PROMPT
+    parser = argparse.ArgumentParser(
+        description="takes an optional integer argument for the number of repetitions")
+    parser.add_argument("--iterations", type=int, help="Number of iterations", default=1, nargs="?")
+    args = parser.parse_args()
 
-    synthesis = await dialectic(synthesis)
+    iterations = args.iterations
 
-    display("dialectic synthesis", synthesis)
-    # write the synthesis to a file so it can be used on next run
-    support.write_file_as_string("synthesis", synthesis)
+    while iterations > 0:
+        iterations -= 1
+        print(f"\nitteration {args.iterations - iterations}\n")
+
+        # read the prompt from a file if it exists
+        synthesis = support.read_file_as_string("synthesis")
+        if synthesis is not None and len(synthesis.strip()) > 0:
+            display("synthesis prompt", synthesis)
+        else:
+            print("no synthesis prompt found, using default prompt")
+            synthesis = DEFAULT_PROMPT
+
+        synthesis = await dialectic(synthesis)
+
+        # display("dialectic synthesis", synthesis)
+        # write the synthesis to a file so it can be used on next run
+        support.write_file_as_string("synthesis", synthesis)
 
 if __name__ == "__main__":
     asyncio.run(main())
