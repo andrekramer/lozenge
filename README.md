@@ -1,4 +1,4 @@
-![lozenge](lozenge.png){ width=100px }
+![lozenge](lozenge.png)
 
 Lozenge is a common symbol in neolythic art such as at Brú na Bóinne.    
 This project explores uses and risks of AI models using dialectic reasoning.    
