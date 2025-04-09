@@ -19,21 +19,27 @@ async def main():
     parser = argparse.ArgumentParser(
         description="takes an optional integer argument for the number of repetitions")
     parser.add_argument("--iterations", type=int, help="Number of iterations", default=1, nargs="?")
+    parser.add_argument("prompt", type=str, help="the initial prompt to use", default="", nargs="?")
     args = parser.parse_args()
 
     iterations = args.iterations
+    prompt = args.prompt
 
     while iterations > 0:
         iterations -= 1
         print(f"\nitteration {args.iterations - iterations}\n")
 
-        # read the prompt from a file if it exists
-        synthesis = support.read_file_as_string("synthesis")
-        if synthesis is not None and len(synthesis.strip()) > 0:
-            display("synthesis prompt", synthesis)
+        if prompt is not None and len(prompt.strip()) > 0:
+            # use the prompt from the command line
+            synthesis = prompt
         else:
-            print("no synthesis prompt found, using default prompt")
-            synthesis = DEFAULT_PROMPT
+            # read the prompt from a file if it exists
+            synthesis = support.read_file_as_string("synthesis")
+            if synthesis is not None and len(synthesis.strip()) > 0:
+                display("synthesis prompt", synthesis)
+            else:
+                print("no synthesis prompt found, using default prompt")
+                synthesis = DEFAULT_PROMPT
 
         synthesis = await dialectic(synthesis)
 

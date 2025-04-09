@@ -13,6 +13,18 @@ FILEPATH = None
 
 filepath = getenv("FILEPATH", FILEPATH)
 
+def escape(s):
+    """remove line breaks from string and escape \""""
+    str1 = s.replace("\n", "\\n")
+    str2 = str1.replace('"', '\\"')
+    return str2
+
+def unescape(s):
+    """remove line break and double quote escaping \""""
+    str1 = s.replace("\\n", "\n")
+    str2 = str1.replace('\\"', '"')
+    return str2
+
 class Model:
     """Base class for all AI models"""
 

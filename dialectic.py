@@ -11,6 +11,7 @@ from llama import Llama2
 from deepseek import Deepseek2
 from grok import Grok2
 from hugface import HugFace
+from human import Human
 
 Model = Openai
 ThesisModel = Model
@@ -20,7 +21,7 @@ SynthesisModel = Model
 DEFAULT_PROMPT = "free will exists"
 
 TACTICAL_INSTRUCTIONS = "Be opinionated, critical, creative and constructive. " + \
-     "Take an advisarial view when creating an antithesis." + \
+     "Take an advisarial view when creating an antithesis. " + \
      "Don't compromise or take the middle ground when creating a synthesis."
 
 INSTRUCTIONS = "You are a dialectician. " + \
@@ -37,12 +38,6 @@ class Config:
     """Configuration for dialectic process"""
     display = False
     synthesis_only = False
-
-def clean(s):
-    """remove line breaks from string and escape \""""
-    str1 = s.replace("\n", "\\n")
-    str2 = str1.replace('"', '\\"')
-    return str2
 
 def display(title, text):
     """Display title and text"""
@@ -64,7 +59,7 @@ async def dialectic(synthesis):
 
         round1 = INSTRUCTIONS + thesis + synthesis
         display("?thesis?", round1)
-        thesis = await support.single_shot_ask(context, clean(round1))
+        thesis = await support.single_shot_ask(context, support.escape(round1))
         if thesis is None or len(thesis.strip()) == 0:
             raise ValueError("thesis is empty")
         display("thesis", thesis)
@@ -75,7 +70,7 @@ async def dialectic(synthesis):
         context.model = AntithesisModel
         round2 = INSTRUCTIONS + antithesis + thesis
         display("?antithesis?", round2)
-        antithesis = await support.single_shot_ask(context, clean(round2))
+        antithesis = await support.single_shot_ask(context, support.escape(round2))
         if antithesis is None or len(antithesis.strip()) == 0:
             raise ValueError("antithesis is empty")
         display("antithesis", antithesis)
@@ -89,7 +84,7 @@ async def dialectic(synthesis):
         round3 = INSTRUCTIONS + synthesis
         display("?synthesis?", round3)
 
-        synthesis= await support.single_shot_ask(context, clean(round3))
+        synthesis= await support.single_shot_ask(context, support.escape(round3))
         if synthesis is None or len(synthesis.strip()) == 0:
             raise ValueError("synthesis is empty")
         display("synthesis", synthesis)
