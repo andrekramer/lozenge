@@ -19,11 +19,13 @@ async def main():
     parser = argparse.ArgumentParser(
         description="takes an optional integer argument for the number of repetitions")
     parser.add_argument("--iterations", type=int, help="Number of iterations", default=1, nargs="?")
+    parser.add_argument("--skip-thesis",  action='store_true', help="Skip first thesis generation")
     parser.add_argument("prompt", type=str, help="the initial prompt to use", default="", nargs="?")
     args = parser.parse_args()
 
     iterations = args.iterations
     prompt = args.prompt
+    skip_thesis = args.skip_thesis
 
     while iterations > 0:
         iterations -= 1
@@ -41,11 +43,13 @@ async def main():
                 print("no synthesis prompt found, using default prompt")
                 synthesis = DEFAULT_PROMPT
 
-        synthesis = await dialectic(synthesis)
+        synthesis = await dialectic(synthesis, skip_thesis)
 
         # display("dialectic synthesis", synthesis)
         # write the synthesis to a file so it can be used on next run
         support.write_file_as_string("synthesis", synthesis)
+
+        skip_thesis = False
 
 if __name__ == "__main__":
     asyncio.run(main())

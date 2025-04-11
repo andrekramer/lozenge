@@ -21,12 +21,13 @@ SynthesisModel = Model
 DEFAULT_PROMPT = "free will exists"
 
 TACTICAL_INSTRUCTIONS = "Be opinionated, critical, creative and constructive. " + \
-     "Take an advisarial view when creating an antithesis. " + \
+     "Be self-consistent and logical in each position taken. " + \
+     "Take an advisarial and novel perspective when creating an antithesis. " + \
+     "Aim to faitfully model the real world, " + \
      "Don't compromise or take the middle ground when creating a synthesis."
 
 INSTRUCTIONS = "You are a dialectician. " + \
     "You reason by constructing a thesis, antithesis and synthesis, " + \
-    "all of which aim to faitfully model the real world, " + \
     "as a multi-step rational dialectic process.\n" + \
     TACTICAL_INSTRUCTIONS + \
     "\n"
@@ -47,25 +48,31 @@ def display(title, text):
     print(text)
 
 
-async def dialectic(synthesis):
+async def dialectic(synthesis, skip_thesis=False):
     """A dialectic process to construct a thesis, antithesis and synthesis.
        starting with some prior synthesis as argument. Returns the synthesis."""
     context = support.AIContext(ThesisModel)
 
     async with context.session:
 
-        thesis = "Construct a thesis (and output only the thesis)" + \
-            "in the dialectic for the following:\n"
+        if not skip_thesis:
+            thesis = "Construct a thesis (and output only the thesis)" + \
+                "in the dialectic for the following:\n"
 
-        round1 = INSTRUCTIONS + thesis + synthesis
-        display("?thesis?", round1)
-        thesis = await support.single_shot_ask(context, support.escape(round1))
-        if thesis is None or len(thesis.strip()) == 0:
-            raise ValueError("thesis is empty")
+            round1 = INSTRUCTIONS + thesis + synthesis
+            display("?thesis?", round1)
+            thesis = await support.single_shot_ask(context, support.escape(round1))
+            if thesis is None or len(thesis.strip()) == 0:
+                raise ValueError("thesis is empty")
+        else:
+            # use the synthesis as the thesis
+            thesis = synthesis
+
         display("thesis", thesis)
 
+        # taking an orthogonal OR diametrically opposed perspective
         antithesis = "Construct an antithesis (and output only the antithesis)" + \
-             " in the dialectic (can use negation) for the following thesis:\n"
+             " in the dialectic (by introducing contradictions) for the following thesis:\n"
 
         context.model = AntithesisModel
         round2 = INSTRUCTIONS + antithesis + thesis
@@ -76,7 +83,7 @@ async def dialectic(synthesis):
         display("antithesis", antithesis)
 
         synthesis = "Construct a synthesis (and output only the synthesis)" + \
-            " in the dialectic " + \
+            " in the dialectic (by qualifying/negating the contradictory statements) " + \
             "for the following thesis and antithesis:\n" + \
             "thesis:\n" + thesis + "\nantithesis:\n" + antithesis
 
