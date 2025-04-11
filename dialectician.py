@@ -19,7 +19,7 @@ async def main():
     parser = argparse.ArgumentParser(
         description="takes an optional integer argument for the number of repetitions")
     parser.add_argument("--iterations", type=int, help="Number of iterations", default=1, nargs="?")
-    parser.add_argument("--skip-thesis",  action='store_true', help="Skip first thesis generation")
+    parser.add_argument("--skip-first-thesis",  action='store_true', help="Skip first thesis generation")
     parser.add_argument("prompt", type=str, help="the initial prompt to use", default="", nargs="?")
     args = parser.parse_args()
 
