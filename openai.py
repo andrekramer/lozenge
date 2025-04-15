@@ -37,6 +37,6 @@ class Openai3(Openai):
     model = "o3-mini"
 
 class Openai4(Openai):
-    """gpt-4.5-preview"""
+    """gpt-4.1"""
     name = "openai4"
-    model = "gpt-4.5-preview"
+    model = "gpt-4.1"

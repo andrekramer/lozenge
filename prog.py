@@ -1,10 +1,11 @@
 """Example of prompting a model"""
+import argparse
 import asyncio
 
 import support
 
 from localhost import LocalHost
-from openai import Openai
+from openai import Openai4
 from gemini import Gemini4
 from claud import Claud
 from llama import Llama2
@@ -12,12 +13,17 @@ from deepseek import Deepseek2
 from grok import Grok2
 from hugface import HugFace
 
-Model = Gemini4
+Model = Openai4
 
 async def main():
     """Example main function"""
 
-    prompt = "roll a die please"
+    parser = argparse.ArgumentParser(
+        description="takes an optional prompt argument")
+    parser.add_argument("prompt", type=str, help="the prompt to use", default="", nargs="?")
+    args = parser.parse_args()
+
+    prompt = args.prompt if args.prompt != "" else "roll a die"
 
     context = support.AIContext(Model)
 

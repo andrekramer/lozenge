@@ -4,7 +4,7 @@ starting with some prior synthesis as input."""
 import support
 
 from localhost import LocalHost
-from openai import Openai
+from openai import Openai4
 from gemini import Gemini4
 from claud import Claud
 from llama import Llama2
@@ -13,7 +13,7 @@ from grok import Grok2
 from hugface import HugFace
 from human import Human
 
-Model = Openai
+Model = Openai4
 ThesisModel = Model
 AntithesisModel = Model
 SynthesisModel = Model
