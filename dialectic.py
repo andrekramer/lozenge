@@ -14,9 +14,12 @@ from hugface import HugFace
 from human import Human
 
 Model = Openai4
+
 ThesisModel = Model
 AntithesisModel = Model
 SynthesisModel = Model
+
+JudgeModel = Model
 
 DEFAULT_PROMPT = "free will exists"
 
@@ -100,3 +103,25 @@ async def dialectic(synthesis, skip_thesis=False):
             return synthesis
 
         return "thesis:\n" + thesis + "\nantitheisis\n" + antithesis + "\nsynthesis\n" + synthesis
+
+
+async def judge_synthesis(previous_synthesis, synthesis):
+    """Judge the synthesis to see if it is improved over the previous synthesis"""
+    context = support.AIContext(JudgeModel)
+
+    async with context.session:
+
+        judge = "Compare the following synthesis and the previous synthesis " + \
+                "(given first) and output TRUE if it is different else output FALSE\n" + \
+                "<previous_synthesis>\n" + previous_synthesis + \
+                "\n</previous_synthesis>\n<synthesis>\n" + synthesis + "\n</synthesis>"
+
+        display("?judge?", judge)
+        response = await support.single_shot_ask(context, support.escape(judge))
+        if response is None or len(response.strip()) == 0:
+            raise ValueError("synthesis judgement is empty")
+
+        print(f"judge response: {response}")
+        if "FALSE" in response and "TRUE" not in response:
+            return False
+    return True
