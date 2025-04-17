@@ -88,7 +88,7 @@ async def dialectic(synthesis, skip_thesis=False):
         synthesis = "Construct a synthesis (and output only the synthesis)" + \
             " in the dialectic (by qualifying/negating the contradictory statements) " + \
             "for the following thesis and antithesis:\n" + \
-            "thesis:\n" + thesis + "\nantithesis:\n" + antithesis
+            "<thesis>\n" + thesis + "</thesis>\n<antithesis>\n" + antithesis + "</antithesis>\n"
 
         context.model = SynthesisModel
         round3 = INSTRUCTIONS + synthesis
