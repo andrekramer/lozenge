@@ -1,0 +1,7 @@
+A dialectic square is 2 thesis / antithesis pairs arranged in a square. The 2 thesis need not be related to each other. The antithesis are probably also not related to each other. Obviously each antithesis is related to the thesis by negation, contradiction or is an adversarial position, in the dialectic tradition. Given two topics, A and B construct a thesis for both called T(A) and T(B). From these, construct an antithesis called TA(A) and TA(B). For each of the 4 thesis /antithesis combinations, perform a dialectic to create 4 syntheses. Given what you learn from these, construct a new synthesis as a way to overcome contradictions in each of the 4 positions. Before the synthesis steps, initial syntheses and final synthesis assign bayesian probabilities to each of the 4 quatrans. These should add up to 100 and are to be used in guiding the synthesis.
+
+Assign a probability to the resulting single synthesis that estimates the coverage of the initial thesis/antithesis pairs.
+
+
+
+Given a topic "AI" and a topic "existential risk" perform a dialectic square.
