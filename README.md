@@ -26,3 +26,5 @@ mcp install dialectic_server.py
 Make sure you add aiohttp as a dependency (see claud_desktop_config.json for claud desktop)   
 Add the install location as FILEPATH in support.py or set as an env var in claud_desktop_config.json file.      
 
+Dialectic square and cube: [post](https://andrekramermsc.substack.com/p/we-philosopher-kings)
+
