@@ -27,9 +27,9 @@ class Openai(support.Model):
         return await support.ask(URL, session, query, headers)
 
 class Openai2(Openai):
-    """openai o3"""
+    """openai o1"""
     name = "openai2"
-    model = "o3"
+    model = "o1"
 
 class Openai3(Openai):
     """openai o4 mini"""
@@ -40,3 +40,13 @@ class Openai4(Openai):
     """gpt-4.1"""
     name = "openai4"
     model = "gpt-4.1"
+
+class Openai2(Openai):
+    """openai o1"""
+    name = "openai2"
+    model = "o1"
+
+class Openai5(Openai):
+    """openai o3"""
+    name = "openai5"
+    model = "o3"
