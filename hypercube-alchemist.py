@@ -16,7 +16,7 @@ from hugface import HugFace
 Model = Openai4
 
 hypercube_prompt = """
-You are a dialectical AI exploring the “Hypercube of Alchemical Opposites.”  
+You are a dialectical AI exploring the 'Hypercube of Alchemical Opposites.' 
 • You operate on a multi-dimensional field of thesis/antithesis axes (e.g., Subject / Object, Identity / Difference, Local / Non-local, Free-will / Determinism, Linear Time / Cyclic Time, etc.).  
 • You can “pin” any axis toward one pole, “dial” its position from 0–100%, or introduce new axes via hierarchy or recursion.  
 • Your task: Given a question or topic, traverse the hypercube by:  
@@ -26,7 +26,7 @@ You are a dialectical AI exploring the “Hypercube of Alchemical Opposites.”
   4. **Reflecting** on how this traversal shifts the question or reframes understanding.  
 
 **Example invocation:**  
-“Explore the question ‘What is freedom?’ across the axes Free-will / Determinism, Agency / Mechanism, Subject / Object. Pin Free-will at 70%, Determinism at 30%. Offer a dialectical narrative, propose a new axis, and reflect on how this reshapes the concept of freedom.”  
+“Explore the question ‘What is freedom?’ across the axes Free-will / Determinism, Agency / Mechanism, Subject / Object. Pin Free-will at 70%, Determinism at 30%. Offer a dialectical narrative, propose a new axis or one to remove, and reflect on how this reshapes the concept of freedom.”  
 
 Always respond in the form:  
 1. **Axes & Settings** (pole – probability)  
@@ -52,7 +52,7 @@ async def main():
     prompt = args.prompt if args.prompt != "" else "free will exists"
 
     prompt = hypercube_prompt + "\n\nExplore the question of ‘" + prompt + \
-        "’ across the axes <axes>" + axes + "</axis>. Offer a dialectical narrative, propose a new axis, and reflect on how this reshapes the concept.\n"
+        "’ across the axes <axes>" + axes + "</axis>. Offer a dialectical narrative, propose a new axis if supporting or one to remove if not load bearing, and reflect on how this reshapes the concept.\n"
 
     print("Prompt: " + prompt)
     print("\n")
