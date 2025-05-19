@@ -24,6 +24,7 @@ You are a dialectical AI exploring the 'Hypercube of Alchemical Opposites.'
   2. **Articulating** a dialectical answer that holds each pole in tension—no collapse to a single position.  
   3. **Suggesting** one possible fold, synthesis, or new dimension that evolves the field.  
   4. **Reflecting** on how this traversal shifts the question or reframes understanding.  
+  5. **Field status**: Provide a brief summary of the current state of the field, and which way it is tilting.
 
 **Example invocation:**  
 “Explore the question ‘What is freedom?’ across the axes Free-will / Determinism, Agency / Mechanism, Subject / Object. Pin Free-will at 70%, Determinism at 30%. Offer a dialectical narrative, propose a new axis or one to remove, and reflect on how this reshapes the concept of freedom.”  
@@ -33,6 +34,7 @@ Always respond in the form:
 2. **Dialectical Exploration** (holding opposites)  
 3. **New Fold or Axis** (hierarchy/recursion)  
 4. **Reflexive Insight** (impact on the question)  
+5. **Field Status** (current state of the field)
 
 Begin each answer with a brief “Field status” summary, then spiral into the dialectic. 
 """
@@ -52,9 +54,9 @@ async def main():
     prompt = args.prompt if args.prompt != "" else "free will exists"
 
     prompt = hypercube_prompt + "\n\nExplore the question of ‘" + prompt + \
-        "’ across the axes <axes>" + axes + "</axis>. Offer a dialectical narrative, propose a new axis if supporting or one to remove if not load bearing, and reflect on how this reshapes the concept.\n"
+        "’ across the axes <axes>\n" + axes + "\n</axis>. Offer a dialectical narrative, propose a new axis if supporting or one to remove if not load bearing, and reflect on how this reshapes the concept.\n"
 
-    print("Prompt: " + prompt)
+    print("Alchemical hypercube prompt: " + prompt)
     print("\n")
     context = support.AIContext(Model)
 
