@@ -36,3 +36,6 @@ python hypercube-alchemist.py -iterations 3 "Is ai safe?"
 
 [Hypercube of Alchemical Opposites](https://andrekramer.substack.com/p/the-hypercube-of-alchemical-opposites)
 
+See hypercube-traversal-traces for some example traces. It's been tested with chatgpt-4.1, gemini-2.5-flash 
+and claud-3.7-sonnet but should work with other models too.
+
