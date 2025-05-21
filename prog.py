@@ -6,14 +6,14 @@ import support
 
 from localhost import LocalHost
 from openai import Openai4
-from gemini import Gemini4
+from gemini import Gemini3
 from claud import Claud
 from llama import Llama2
 from deepseek import Deepseek2
 from grok import Grok2
 from hugface import HugFace
 
-Model = Openai4
+Model = Gemini3
 
 async def main():
     """Example main function"""
