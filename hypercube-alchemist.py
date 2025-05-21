@@ -6,8 +6,8 @@ import support
 
 from localhost import LocalHost
 from openai import Openai4
-from gemini import Gemini4
-from claud import Claud
+from gemini import Gemini3
+from claud import Claud2
 from llama import Llama2
 from deepseek import Deepseek2
 from grok import Grok2
@@ -39,7 +39,7 @@ Always respond in the form:
 3. **New Fold or Axis** (hierarchy/recursion)  
 4. **Reflexive Insight** (impact on the question)  
 5. **Field Status** (current state of the field)
-6. **Terminal States** say </idle> or output an axis to add or drop (prefix with -) enclosed in <axis></axis> tags (update the axes).
+6. **Terminal States** say </idle> if field is stable or output an axis to add or drop (prefix with -) enclosed in <axis></axis> tags (update the axes).
 
 Begin each answer with a brief “Field status” summary, then spiral into the dialectic. 
 """
