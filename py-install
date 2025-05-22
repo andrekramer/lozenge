@@ -3,3 +3,4 @@ source venv/bin/activate
 pip install aiohttp
 pip install mcp
 pip install matplotlib
+pip install numpy
