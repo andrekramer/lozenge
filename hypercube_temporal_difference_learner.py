@@ -3,7 +3,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from typing import Dict, List, Tuple, Optional
-import random
 
 class HypercubeTDLearner:
     """
@@ -271,4 +270,4 @@ if __name__ == "__main__":
     learner = demonstrate_hypercube_td_learning()
     
     # Uncomment to see visualization (requires matplotlib)
-    # learner.visualize_learning("safety")
+    learner.visualize_learning("safety")
