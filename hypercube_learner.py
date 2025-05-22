@@ -1,3 +1,4 @@
+# Coded by Gemini-2.5-pro (preview-05-06) as prompted by Andre Kramer
 import random
 import matplotlib.pyplot as plt
 
