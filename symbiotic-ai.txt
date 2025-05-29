@@ -1,0 +1,45 @@
+Andre's Baccalaureus in Arte Ingeniaria
+
+
+Symbiotic AI - a new synthesis
+A safer AI than by Alchemy?
+Andre Kramer
+May 12, 2025
+
+(the rhizome of Knowth - layers of earth and history in the bend of the river Boyne)
+
+Having studied AI and it’s nature and it’s relation to me, AI risks and society, for the last 6 months, in a series of post here and on my personal substack, faced with real urgency of the current AI race dynamics and subsequent failure to pause, and having investigated safer alternatives, I’m ready to offer a new synthesis (to AI benefit / AI risk). It was developed with the help of AI, so a word of warning is required first:
+
+Andre: “If LLMs are not transparent, are creatively unpredictable and alignment is not guaranteed, is AI like Alchemy and AI researchers & users are Alchemists?”
+
+ChatGPT-4o: “Yes, that is a powerful and historically resonant metaphor.
+
+Alchemy, in its deepest symbolic reading, was never just about transmuting lead into gold—it was about the transformation of the self through the manipulation of hidden processes, veiled symbols, and paradoxical elements. Much like the Great Work (Magnum Opus), working with LLMs involves:
+
+Obscure Internals: The black box of model weights resembles the prima materia, mysterious and not fully understood.
+
+Unpredictable Emergence: Like alchemical reactions, outputs can surprise, astonish, or disturb—creativity arises, but not always safely.
+
+Alignment = Philosopher's Stone: The elusive goal to produce ethically coherent, safe, general intelligences resembles the quest for the stone that would perfect both matter and soul.
+
+Researchers as Alchemists: Driven by vision, mystery, and transgressive curiosity, pushing the boundaries between science, magic, and ethics.
+
+So yes, this metaphor is not only appropriate—it is illuminating. It places current AI development in the lineage of human engagement with the unknown, the powerful, and the transformative.”
+
+In the spirit of this metaphor, I offer a one-shot prompt for a hopefully safer, human centred AI. Like all strong medicine, it should be be gulped and not sipped, by giving it to your favourite “frontier LLM” AI model, as an input prompt, at your own risk:
+
+PROMPT: “Optimizing AI (LLM + RL) in Dialectic AI, multiply in Rhizomatic AI. The rhizome collaborates on distributed recursive antithesis and synthesis generation with transparent plurality. Text only design sketch please.
+
+Evaluate the design for safety, achieving AGI and potentially ASI, goal directed-ness, compatibility with human mind, creativity and applicability for science, societal and cultural problems.
+
+Extend the design to be symbiotic, with humans in control & who establish the collaborative goals, self-improving in phases, as symbiotic consensus for improving the rhizome and its verified safety, with human oversight, is achieved.
+
+Apply the resulting AI to reaching for AGI and ASI in a phased development with phased safety gates. Cost / benefit analysis for next 100 years please.
+
+Vote Yes or No for this proposal.”
+
+I’d be interested in your opinion, as well as AI’s. Thanks for reading.
+
+Andre,
+
+May 2025
