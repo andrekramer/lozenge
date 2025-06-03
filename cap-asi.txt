@@ -1,5 +1,6 @@
 CAP on ASI: Why the CAP Theorem prevents some AI Doom Scenarios
 Andre Kramer (who outlined the what-if based on distributed systems theory) 
+Andre Kramer (who outlined the what-if based on distributed systems theory) 
 
 and Anthropic Claud Sonnet 4,
 
@@ -13,7 +14,7 @@ OpenAI Deep Research (opposing expert opinion, with our reply).
 
 June 2025
 
-I think the arguments presented here deserve further investigation and should help shift the conversation to non-monolithic, multi-party ASI safety as well as limits to their control.
+I think the arguments presented here are important for AI safety and deserve further investigation and should help shift the conversation to non-monolithic, multi-party ASI safety as well as to limits to their control.
 
 Thanks for reading,
 
@@ -793,4 +794,4 @@ The counterargument is valuable because it forces a more nuanced understanding o
 
 What's your take on how this critique affects the core argument?”
 
-Andre: “It’s like the old saying: To get to X I would not start from here.”
+Andre: “It’s like the old saying: To get to X I would not start from here. But let’s see Trickster play his hand …”
